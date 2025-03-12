@@ -7,25 +7,15 @@ import blobconverter
 shape = (1,1)
 X = torch.ones(shape, dtype=torch.float16)
 
-class testXin(nn.Module):
+class testBuff(nn.Module):
     def forward(self, inp):                        
         out = inp  
         return out
 
-# # Local debugging
-# model = testXin()
-# x0 = X - 2.0
-# out = X
-# fInit = 1
-# for i in range(5):    
-#     out = model(fInit, x0, out)  # Forward pass    
-#     fInit = 0
-#     print("out: ",out)
-
 filename = "testBuff"
 onnx_file = filename + ".onnx"
 
-torch_model = testXin()
+torch_model = testBuff()
 
 print(f"Writing to {onnx_file}")
 torch.onnx.export(
